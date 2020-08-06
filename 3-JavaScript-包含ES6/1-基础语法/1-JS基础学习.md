@@ -273,3 +273,98 @@ function sayHello() {
 5. **如果传入的实参不够，结果将如何？**
 
    将没有相应实参的形参设置为未定义（undefined）。
+
+### 1.4 数据类型
+
+#### 1.4.1 数组
+
+　　如何使用JavaScript表示多个值，数组是一种可存储很多值的JavaScript数据类型。数组可存储的元素数受制于计算机的内存量。定义一个数组的方式如下所示：
+
+```js
+// 创建一个空的数组
+var arrayTest = [];
+
+// 数组中可以存储不同的数据类型
+var arrayTest1 = [1, 2, "hello"];
+
+// 通过构造函数创建一个新的数组
+var arrayTest2 = new Array(3); // 创建一个包含三个索引的数组，但是字面量方式创建数组的方式较为常用
+```
+
+　　如何访问数组中的元素：
+
+```js
+var arrayTest1 = [1, 2, "hello"];
+
+// 通过索引的方式访问数组，js中的数组没有负索引
+// 如果一个访问的元素不存在，返回undefined
+console.log(arrayTest1[1]) 
+
+// 获取数组的长度arrayTest1.length, 可以结合for循环，遍历数组
+for (var i = 0; i < arrayTest1.length-1; i++) {
+    console.log(arrayTest1[i])
+}
+
+// 向数组中添加一个值
+arrayTest1.push("hi")  // 在数组末尾添加一个新元素,类似python中列表的append方法
+```
+
+　　数组的稀疏性：
+
+```js
+// 首先需要明确的是数组是稀疏的，稀疏数组是有些索引处有值，而其他索引处没有值的数组。
+
+// 以下创建了一个稀疏数组，为数组添加值得时候一定要注意数组的稀疏性
+var sparseArray = [];
+sparseArray[0] = true;
+spraseArray[100] = true;
+```
+
+#### 1.4.2 对象
+
+　　访问对象的属性，可以通过句点表示法：
+
+```js
+var student = {
+    name: "achui",
+    age: 18
+};
+
+// 为对象添加新的属性
+student.gender = "women";
+
+// 访问对象的属性,访问不存在的属性时将得到undefined
+student.gender;
+
+// 修改对象的属性值
+student.gender = "man";
+
+// 删除属性的值,使用特殊的关键词delete
+delete student.gender;
+
+// 访问属性的另一种方式使用方括号进行访问
+student["gender"]
+```
+
+　　变量在存储对象的时候，实际上存储的是对象的引用，而不是像原始类型那样直接存储实际的值。这对于函数传参来说很有趣，我们了解到，js中传递参数是按照值进行传递的，而保存对象的变量实际上保存的是对象的引用，这时在传递时就会将对象引用的副本传递给形参，这样，实参和形参指向了同一个对象，所以在函数中进行对象的属性操作的时候，是会影响引用他的其他变量的。
+
+　　为对象添加行为：
+
+```js
+var student = {
+    name: "achui",
+    age: 18,
+    study: function() {
+        console.log("study");
+    }
+};
+
+// 使用对象的方法
+student.study();
+
+// 通过this关键词，在方法中使用对象的属性，它与python中的self是相同的
+// this关键词指代的就是当前对象
+```
+
+
+
