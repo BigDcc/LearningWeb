@@ -227,9 +227,100 @@ function alertTip() {
 
 ​		dir属性用来规定元素中文字的方向，数值值ltr表示从左到右，属性值rtl从右到左。
 
+### 2.5 文档元素和元数据
 
+​		文档元素和元数据是HTML中最基础的元素，主要是用来创建HTML文档和说明其内容的元素。
 
+#### 2.5.1 文档元素
 
+​		每一个HTML文档都必须以DOCTYPE元素开头，浏览器据此得知将要处理的内容是HTML文档。在HTML5中该元素只有一种写法。
 
+```html
+<!DOCTYPE HTML>
+```
 
+​		html元素又称为根元素，它表示HTML文档的开始。
+
+```html
+<!DOCTYPE HTML>
+<html>
+</html>
+```
+
+​		head元素包含着文档的元数据。
+
+```html
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>DOCUMENT</title>
+    </head>
+</html>
+```
+
+​		body元素中主要是包含文档中的内容，它是html的第二个子元素。
+
+```html
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>DOCUMENT</title>
+    </head>
+    <body>
+        网页的内容
+    </body>
+</html>
+```
+
+#### 2.5.2 元数据元素
+
+​		元数据提供HTML文档的相关信息。放在head元素内。
+
+##### 2.5.2.1 title元素
+
+  - 设置文档的标题和名称；
+  - 通常显示在浏览器的标签页或者窗口顶部；
+  - 每个浏览器只有一个title元素；
+
+##### 2.5.2.2 base元素
+
+- base元素用来设置一个基准的URL，让HTML文档中的相对链接在此基础上进行解析;
+- 浏览器会把基准URL和相对URL拼接成完整的URL;
+
+##### 2.5.2.3 meta元素
+
+- meta元素可以用来定义文档的各种元数据，一个HTML中可以包含多个meta元素;
+
+##### 2.5.2.3 style元素
+
+- style元素出现在head中，主要是用来内嵌css样式的；
+- 一个HTML文件可以包含多个style元素；
+
+##### 2.5.2.4 link元素
+
+- 主要用来跟外部资源建立联系，如外部叠层样式表；
+
+- link元素另一个最常用的点，是定义网站标志；
+
+```html
+<link rel="shortcut icon" href="https://www.baidu.com/cache/icon/favicon.ico" type="image/x-icon">
+```
+
+  ![icon演示](./res/003.png)
+
+  ##### 2.5.2.5 script元素
+
+- 这个元素主要的作用就是引入js代码的，具体用法查看js相关笔记。
+
+##### 2.5.2.6 noscript元素
+
+​		noscript元素可以用来向禁用了js或浏览器不支持js的用户显示一些内容。
+
+```html
+<head>
+    <noscript>
+        <p>你的浏览器不支持js</p>
+    </noscript>
+</head>
+```
 
