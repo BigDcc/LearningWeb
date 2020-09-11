@@ -688,6 +688,10 @@ student.study();
 
 ## 3 对象
 
+### 3.1 对象的概念
+
+对象是
+
 在一个对象中绑定函数，称为这个对象的方法。
 
 instanceof来确定对象是由哪个构造函数创建的
@@ -700,11 +704,146 @@ instanceof来确定对象是由哪个构造函数创建的
 
 对象字面量。 
 
+属性包括名字和值，属性名可以是包含空白字符串在内的任意字符串，对象中不能存在两个同名的属性
+
+创建，设置，查找，删除，检测，枚举它的属性
+
 ■ 
 
 需要创建大量类似的对象时，适
 
 合使用构造函数。
+
+### 3.2 原型
+
+#### 3.2.1 原型的概念
+
+​		将实例对象共用的属性（包括方法）保存在原型中，而不是每个实例对象中，从而大大减少宿主环境的内存消耗，并达到了代码层面的复用，这就是继承的好处。在传统的编程语言中，通过类模型完成实例对象从类中继承属性（包括方法），而js中没有类的概念，js采用原型式方式进行继承，并可实现传统的类模型中的其他面向对象的思想。对象从其他对象那里继承行为，我们称之为原型式继承（prototypal inheritance）或基于原型的继承。
+
+
+
+重写原型
+
+每一个js对象都和另一个对象相关联，另一个对象就是原型，每一个对象都从原型继承属性。所有通过对象直接量创建的对象都具有同一个原型对象，
+
+```js
+"use strict"
+
+function Dog(name, age, gender) {
+    this.name = name;
+    this.age = age;
+    this.gender = gender;
+};
+
+Dog.prototype.talk = function () {  // 给原型添加属性和方法，在构造函数被使用之前
+    return this.name + " wang!wang!";
+};
+
+var dog1 = new Dog("achui", 18, "man");
+var dog2 = new Dog("bigchui", 18, "man");
+
+dog2.talk = function () {  // 重写原型
+    return this.name + " wow!wow!";
+};
+
+console.log(dog1.talk());  // res -> achui wang!wang!
+console.log(dog2.talk());  // res -> bigchui wow!wow!
+
+Dog.prototype.run = function () {  // 原型是动态的
+    return this.name + " run!run!";
+};
+
+console.log(dog1.run());// res -> achui run!run!
+console.log(dog2.run());// res -> bigchui run!run!
+```
+
+
+
+​		事实上，你创建的每个原型链的终点都是Object。
+
+这是因为对于你创建的任何实例，其默认原型都是
+
+Object，除非你对其进行了修改。
+
+
+
+**constructor**
+
+**hasOwnProperty**
+
+**isPrototypeOf**
+
+**propertyIsEnumerable**
+
+**toString**
+
+**toLocaleString**
+
+**valueOf**
+
+hfjsp_ch13.indd 609 
+
+17/8/14 上午10:25
+
+属性**constructor**指向与这个原型相关联的构造函
+
+数。
+
+**toLocalString**是一个方法。它类似于**toString**，也将对象转换为字
+
+符串。通过重写这个方法，可提供描述对象的本地化字符串（如用
+
+你的母语表示的字符串）。
+
+**isPrototype**是一个方法，用于判断一个对象是否是
+
+另一个对象的原型。
+
+你知道这个方法的作用。
+
+方法**propertyIsEnumerable**用于判断通过迭代对象
+
+的所有属性是否可访问指定的属性。
+
+### 3.2 创建对象
+
+#### 3.2.1 创建对象的多种方式
+
+​		通常在ES5中创建对象的方式为以下三种：
+
+- 对象直接量
+
+- 关键字`new`
+
+- `Object.create()`函数
+
+  **对象直接量创建对象演示：**
+
+```js
+// 注意事项：
+// 属性名可以是js中的标识符，也可以是字符串的直接量（包含空字符串）
+// 对象的最后一个属性结尾的逗号分隔符可以忽略
+var person = {
+    name: "achui",
+    age: 18,
+    baseInfo: {
+        classInfo: "3年2班",
+        schoolInfo: "函授本科"
+    }
+};
+```
+
+​		**使用关键字创建对象演示：**
+
+```js
+// 注意事项：
+// 关键字new后跟随一个函数的调用，这个函数被称为构造函数，js中的原始类型都包含内置的构造函数
+var person = new Object();
+```
+
+#### 3.2.2 自定义构造函数
+
+
 
 ### 1.3.9 构造函数
 
