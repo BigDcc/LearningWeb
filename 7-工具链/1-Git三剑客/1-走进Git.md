@@ -610,7 +610,9 @@ git mv source_file target_file
 
 在创建初始化`Git`仓库的时候，`Git`会给我们默认建立一个分支`master`我们可以把他理解为主分支。一般的分支我们用`feature`为开头来进行命名，`bug`分支我们可以用`fix`开头来命名。所以这里就涉及到了分支如何分， 如何切换，如何合并，如何解决冲突等问题。
 
+### 3.2 分支的基本操作
 
+#### 3.2.1 分支创建与切换
 
 分支创建
 
@@ -626,9 +628,19 @@ git branch learning_git  # 创建学习git的分支
 git checkout branch_name
 ```
 
+创建分支并切换
 
+```shell
+git checkout -b branch_name
+```
 
-通常我们会在创建一个新分支后立即切换过去，这可以用 `git checkout -b <newbranchname>` 一条命令搞定
+#### 3.2.2 合并与删除分支
+
+```shell
+$ git checkout master
+$ git merge hotfix
+git branch -d hotfix
+```
 
 
 
